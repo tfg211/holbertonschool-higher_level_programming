@@ -1,0 +1,26 @@
+"""
+tests/1-my_list_7.txt: Check print_sorted() with negative numbers.
+"""
+
+# Import the class
+>>> MyList = __import__('1-my_list').MyList
+
+# Initialize a list with mixed positive, negative, and zero numbers
+>>> my_list = MyList()
+>>> my_list.append(5)
+>>> my_list.append(-3)
+>>> my_list.append(0)
+>>> my_list.append(10)
+>>> my_list.append(-8)
+
+# Check the original state (unsorted)
+>>> my_list
+[5, -3, 0, 10, -8]
+
+# Call print_sorted()
+>>> my_list.print_sorted()
+[-8, -3, 0, 5, 10]
+
+# Check that the original list remains unchanged
+>>> my_list
+[5, -3, 0, 10, -8]
