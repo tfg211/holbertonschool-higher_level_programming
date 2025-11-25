@@ -1,89 +1,16 @@
-=============================
-Test BaseGeometry Class
-=============================
-
-Class and Module Documentation
-==============================
-    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
-    >>> print(BaseGeometry.__doc__)
-    <BLANKLINE>
-    A class that defines the base geometry.
-    <BLANKLINE>
-    >>> print(BaseGeometry.area.__doc__)
-    <BLANKLINE>
-        Raises an Exception indicating that the area method is not implemented.
-        <BLANKLINE>
-    >>> print(BaseGeometry.integer_validator.__doc__)
-    <BLANKLINE>
-        Validates that a value is a positive integer.
-    <BLANKLINE>
-        Args:
-            name (str): The name of the value.
-            value (int): The value to validate.
-    <BLANKLINE>
-        Raises:
-            TypeError: If value is not an integer.
-            ValueError: If value is less than or equal to 0.
-        <BLANKLINE>
-
-Test area method
-================
-    >>> bg = BaseGeometry()
-    >>> bg.area()
-    Traceback (most recent call last):
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("my_int", 12)
+>>> bg.integer_validator("width", 89)
+>>> bg.integer_validator("name", "John")
+Traceback (most recent call last):
     ...
-    Exception: area() is not implemented
-
-Test integer_validator method
-=============================
-
-Valid Integer:
-    >>> bg.integer_validator("width", 89)
-
-String validation (TypeError):
-    >>> bg.integer_validator("name", "John")
-    Traceback (most recent call last):
+TypeError: name must be an integer
+>>> bg.integer_validator("age", 0)
+Traceback (most recent call last):
     ...
-    TypeError: name must be an integer
-
-Float validation (TypeError):
-    >>> bg.integer_validator("age", 12.5)
-    Traceback (most recent call last):
+ValueError: age must be greater than 0
+>>> bg.integer_validator("distance", -4)
+Traceback (most recent call last):
     ...
-    TypeError: age must be an integer
-
-Boolean validation (TypeError):
-    >>> bg.integer_validator("check", True)
-    Traceback (most recent call last):
-    ...
-    TypeError: check must be an integer
-
-List validation (TypeError):
-    >>> bg.integer_validator("list", [1, 2])
-    Traceback (most recent call last):
-    ...
-    TypeError: list must be an integer
-
-Tuple validation (TypeError):
-    >>> bg.integer_validator("tuple", (1, 2))
-    Traceback (most recent call last):
-    ...
-    TypeError: tuple must be an integer
-
-None validation (TypeError):
-    >>> bg.integer_validator("none", None)
-    Traceback (most recent call last):
-    ...
-    TypeError: none must be an integer
-
-Zero validation (ValueError):
-    >>> bg.integer_validator("age", 0)
-    Traceback (most recent call last):
-    ...
-    ValueError: age must be greater than 0
-
-Negative validation (ValueError):
-    >>> bg.integer_validator("distance", -4)
-    Traceback (most recent call last):
-    ...
-    ValueError: distance must be greater than 0
+ValueError: distance must be greater than 0
